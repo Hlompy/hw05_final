@@ -181,7 +181,6 @@ class Views(TestCase):
         )
 
     def test_follow(self):
-        follow_count = Follow.objects.count()
         Follow.objects.create(user=self.follower, author=self.user)
         following = reverse(
             'posts:profile_follow',
@@ -203,7 +202,6 @@ class Views(TestCase):
                 user=self.follower,
                 author=self.user).exists()
         )
-        
 
     def test_unfollow(self):
         Follow.objects.create(user=self.follower, author=self.user)
