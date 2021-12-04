@@ -47,6 +47,10 @@ class StaticURLTests(TestCase):
                 response = self.client.get(adress)
                 self.assertTemplateUsed(response, template)
 
+    def test_follow(self):
+        response = self.authorized_client.get('/follow')
+        self.assertEqual(response.status_code, HTTPStatus.MOVED_PERMANENTLY)
+
     def test_author_can_create(self):
         response = self.authorized_client.get('/create/')
         self.assertEqual(response.status_code, HTTPStatus.OK)

@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from .models import Post, Group, User, Follow
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from .models import Post, Group, User, Follow
 
 from .forms import PostForm, CommentForm
 
 
 def index(request):
-    posts = Post.objects.all()
+    posts = Post.objects.select_related('author', 'group')
     paginator = Paginator(posts, settings.AMOUNT_POSTS)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
@@ -58,10 +58,12 @@ def profile(request, username):
 
 
 def post_detail(request, post_id):
-    post_1 = get_object_or_404(Post, id=post_id)
+    post_1 = get_object_or_404(Post.objects.select_related(), id=post_id)
     template = 'posts/post_detail.html'
     form = CommentForm(request.POST or None)
-    post = Post.objects.select_related('author').get(id=post_id)
+    post = get_object_or_404(
+        Post.objects.select_related('author'), id=post_id
+    )
     comments = post.comments.all()
     context = {
         'form': form,
@@ -144,5 +146,7 @@ def profile_follow(request, username):
 @login_required
 def profile_unfollow(request, username):
     author = get_object_or_404(User, username=username)
-    get_object_or_404(Follow, user=request.user, author=author).delete()
+    following = Follow.objects.filter(user=request.user, author=author)
+    if following.exists():
+        following.delete()
     return redirect('posts:profile', username=username)
