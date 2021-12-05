@@ -17,9 +17,6 @@
   <li class="list-group-item">
     Автор: {{ post.author.get_full_name }}
   </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Всего постов автора: <span class="letter">{{ author_amount }}</span>
-  </li>
   <li class="list-group-item">
     {% include 'posts/includes/comment.html'%}
     {% if request.user.is_authenticated %}

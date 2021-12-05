@@ -6,24 +6,24 @@ User = get_user_model()
 
 
 class Post(models.Model):
-    text = models.TextField(max_length=200, verbose_name="Текст")
+    text = models.TextField(max_length=200, verbose_name='Текст')
     pub_date = models.DateTimeField(
         auto_now_add=True,
-        verbose_name="Дата",
+        verbose_name='Дата',
         db_index=True
     )
     author = models.ForeignKey(
         User, on_delete=models.CASCADE,
-        related_name="posts",
-        verbose_name="Автор"
+        related_name='posts',
+        verbose_name='Автор'
     )
     group = models.ForeignKey(
-        "Group",
+        'Group',
         on_delete=models.SET_NULL,
-        related_name="posts",
+        related_name='posts',
         blank=True,
         null=True,
-        verbose_name="Группа",
+        verbose_name='Группа',
     )
     image = models.ImageField(
         'Картинка',
@@ -32,7 +32,7 @@ class Post(models.Model):
     )
 
     class Meta:
-        ordering = ("-pub_date",)
+        ordering = ('-pub_date',)
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
 
@@ -73,7 +73,7 @@ class Comment(models.Model):
         User,
         on_delete=models.CASCADE
     )
-    text = models.TextField(verbose_name="Комментарий")
+    text = models.TextField(verbose_name='Комментарий')
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:

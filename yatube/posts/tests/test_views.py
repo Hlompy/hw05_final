@@ -5,7 +5,6 @@ from django import forms
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 from ..forms import PostForm
-
 from ..models import Follow, Group, Post, Comment
 
 User = get_user_model()
