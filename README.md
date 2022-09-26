@@ -19,7 +19,7 @@
 1. Клонируйте репозиторий и перейдите в него в командной строке:
 
 ```
-git clone https://github.com/Banes31/hw05_final.git
+git clone https://github.com/Hlompy/hw05_final.git
 ```
 
 ```
