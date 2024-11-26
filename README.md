@@ -1,10 +1,10 @@
 # hw05_final
 
-Социальная сеть блогеров
+Social network of bloggers
 
-Сообщество для публикаций. Блог с возможностью публикации постов, подпиской на группы и авторов, а также комментированием постов.
+A community for publishing. A blog with an emphasis on publishing posts, subscribing to groups and authors, and commenting on posts.
 
-### **Стек**
+### **Stack**
 ![python version](https://img.shields.io/badge/Python-3.7-green)
 ![django version](https://img.shields.io/badge/Django-2.2-green)
 ![pillow version](https://img.shields.io/badge/Pillow-8.3-green)
@@ -12,11 +12,11 @@
 ![requests version](https://img.shields.io/badge/requests-2.26-green)
 ![sorl-thumbnail version](https://img.shields.io/badge/thumbnail-12.7-green)
 
-### **Запуск проекта в dev-режиме**
-Инструкция ориентирована на операционную систему windows и утилиту git bash.<br/>
-Для прочих инструментов используйте аналоги команд для вашего окружения.
+### **Launching a project in dev mode**
+The instructions are oriented towards the windows operating system and the git bash utility.<br/>
+For other tools, use the command analogs for your environment.
 
-1. Клонируйте репозиторий и перейдите в него в командной строке:
+1. Clone the repository and go to it in the command line:
 
 ```
 git clone https://github.com/Hlompy/hw05_final.git
@@ -26,7 +26,7 @@ git clone https://github.com/Hlompy/hw05_final.git
 cd hw05_final
 ```
 
-2. Установите и активируйте виртуальное окружение
+2. Install and activate the virtual environment
 ```
 python -m venv venv
 ``` 
@@ -34,40 +34,40 @@ python -m venv venv
 source venv/Scripts/activate
 ```
 
-3. Установите зависимости из файла requirements.txt
+3. Install dependencies from requirements.txt file
 ```
 pip install -r requirements.txt
 ```
 
-4. В папке с файлом manage.py выполните миграции:
+4. In the folder with the manage.py file, run migrations:
 ```
 python manage.py migrate
 ```
 
-5. В папке с файлом manage.py запустите сервер, выполнив команду:
+5. In the folder with the manage.py file, start the server by running the command:
 ```
 python manage.py runserver
 ```
 
-### *Что могут делать пользователи*:
+### *What users can do*:
 
-**Залогиненные** пользователи могут:
-1. Просматривать, публиковать, удалять и редактировать свои публикации;
-2. Просматривать информацию о сообществах;
-3. Просматривать и публиковать комментарии от своего имени к публикациям других пользователей *(включая самого себя)*, удалять и редактировать **свои** комментарии;
-4. Подписываться на других пользователей и просматривать **свои** подписки.<br/>
-***Примечание***: Доступ ко всем операциям записи, обновления и удаления доступны только после аутентификации и получения токена.
+**Logged in** users can:
+1. View, post, delete, and edit their posts;
+2. View community information;
+3. View and post comments on their behalf to other users' posts *(including themselves)*, delete and edit **their** comments;
+4. Subscribe to other users and view **their** subscriptions.<br/>
+***Note***: Access to all write, update, and delete operations is only available after authentication and receiving a token.
 
-**Анонимные :alien:** пользователи могут:
-1. Просматривать публикации;
-2. Просматривать информацию о сообществах;
-3. Просматривать комментарии;
+**Anonymous :alien:** users can:
+1. View posts;
+2. View community information;
+3. View comments;
 
-### **Набор доступных эндпоинтов** :point_down:_:
-* ```posts/``` - Отображение постов и публикаций (_GET, POST_);
-* ```posts/{id}``` - Получение, изменение, удаление поста с соответствующим **id** (_GET, PUT, PATCH, DELETE_);
-* ```posts/{post_id}/comments/``` - Получение комментариев к посту с соответствующим **post_id** и публикация новых комментариев(_GET, POST_);
-* ```posts/{post_id}/comments/{id}``` - Получение, изменение, удаление комментария с соответствующим **id** к посту с соответствующим **post_id** (_GET, PUT, PATCH, DELETE_);
-* ```posts/groups/``` - Получение описания зарегестрированных сообществ (_GET_);
-* ```posts/groups/{id}/``` - Получение описания сообщества с соответствующим **id** (_GET_);
-* ```posts/follow/``` - Получение информации о подписках текущего пользователя, создание новой подписки на пользователя (_GET, POST_).<br/>
+### **Set of available endpoints** :point_down:_:
+* ```posts/``` - Displaying posts and publications (_GET, POST_);
+* ```posts/{id}``` - Getting, editing, deleting a post with the corresponding **id** (_GET, PUT, PATCH, DELETE_);
+* ```posts/{post_id}/comments/``` - Getting comments to a post with the corresponding **post_id** and publishing new comments (_GET, POST_);
+* ```posts/{post_id}/comments/{id}``` - Getting, editing, deleting a comment with the corresponding **id** to a post with the corresponding **post_id** (_GET, PUT, PATCH, DELETE_);
+* ```posts/groups/``` - Getting descriptions of registered communities (_GET_);
+* ```posts/groups/{id}/``` - Get a description of a community with the corresponding **id** (_GET_);
+* ```posts/follow/``` - Get information about the current user's subscriptions, create a new subscription to the user (_GET, POST_).<br/>
